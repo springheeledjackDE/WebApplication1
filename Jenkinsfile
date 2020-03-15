@@ -10,7 +10,7 @@ pipeline {
                     includes: '*.*'
             }
         }
-        stage('Build') {
+        stage('Unstash To Node3') {
             agent { node { label 'Node3' } }
             steps {
                 unstash name: 'checkedOutCode' }
