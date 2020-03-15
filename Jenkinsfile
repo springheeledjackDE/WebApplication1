@@ -11,9 +11,9 @@ pipeline {
             }
         }
         stage('Build') {
-            node { label 'Node3' 
-                unstash name: 'checkedOutCode' 
-            }
+            node { label 'Node3' }
+            steps {
+                unstash name: 'checkedOutCode' }
         }
         stage('Test') {
             steps {
