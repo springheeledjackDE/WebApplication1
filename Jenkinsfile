@@ -11,11 +11,8 @@ pipeline {
             }
         }
         stage('Build') {
-            agent { 
-                node { label 'Node3' 
-                    unstash name: 'checkedOutCode' 
-                    } 
-                }
+            node { label 'Node3' 
+                unstash name: 'checkedOutCode' 
             }
         }
         stage('Test') {
