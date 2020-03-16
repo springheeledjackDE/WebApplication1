@@ -22,5 +22,5 @@ namespace WebApplication1
 				{
 					webBuilder.UseStartup<Startup>();
 				});
-	}
+	} // sudo usermod -aG docker <name-of-user-to-grant-permission>
 }
