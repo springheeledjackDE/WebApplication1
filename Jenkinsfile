@@ -13,7 +13,9 @@ pipeline {
             agent { node { label 'Node3' } }
             steps {
                     checkout scm
-                    docker.build("WebApplication1First:${env.BUILD_ID}")
+
+                    def customImage = docker.build("my-image:${env.BUILD_ID}")
+
                 }
         }
         stage('Test') {
