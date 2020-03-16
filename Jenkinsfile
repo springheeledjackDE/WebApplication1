@@ -10,11 +10,16 @@ pipeline {
             }
         }
         stage('Unstash To Node3 c') {
-            agent { node { label 'Node3' } }
-            steps {
-                    checkout scm
+            agent { 
+                node { 
+                        label 'Node3'
+                        checkout scm
 
-                    def customImage = docker.build("myimage")
+                        def customImage = docker.build("myimage")
+                    } 
+                }
+            steps {
+                    
 
                 }
         }
