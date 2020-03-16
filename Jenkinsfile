@@ -12,7 +12,8 @@ pipeline {
         stage('Unstash To Node3 c') {
             agent { node { label 'Node3' } }
             steps {
-                docker build -t WebApplication1First https://github.com/springheeledjackDE/WebApplication1.git
+                    checkout scm
+                    docker.build("WebApplication1First:${env.BUILD_ID}")
                 }
         }
         stage('Test') {
