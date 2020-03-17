@@ -21,7 +21,7 @@ environment {
 
                 script {
                     dockerImage = docker.build(registry + ":${env.BUILD_ID}")
-
+                
                     docker.withRegistry( '', dockerHubCredential ) {
                         echo "push1"
                         dockerImage.push()
@@ -33,7 +33,7 @@ environment {
         stage('Deploy Image on Node3') {
             steps{
                 script {
-                    
+                    echo "dummy"
                 }
             }
         }
