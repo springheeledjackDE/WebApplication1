@@ -28,7 +28,9 @@ environment {
             steps{
                 script {
                     docker.withRegistry( '', dockerHubCredential ) {
+                        echo "push1"
                         dockerImage.push()
+                        echo "push2"
                     }
                 }
             }
