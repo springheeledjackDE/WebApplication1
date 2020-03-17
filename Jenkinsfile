@@ -27,7 +27,7 @@ environment {
         stage('Deploy Image on Node3') {
             steps{
                 script {
-                    docker.withRegistry( 'https://hub.docker.com/repository/docker', dockerHubCredential ) {
+                    docker.withRegistry( 'https://hub.docker.com', dockerHubCredential ) {
                         echo "push1"
                         dockerImage.push()
                         echo "push2"
