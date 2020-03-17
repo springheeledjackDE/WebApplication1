@@ -27,7 +27,7 @@ environment {
         stage('Deploy Image on Node3') {
             steps{
                 script {
-                    docker.withRegistry( '', dockerHubCredential ) {
+                    docker.withRegistry( 'https://hub.docker.com/repository/docker/springheeledjack/temp', dockerHubCredential ) {
                         echo "push1"
                         dockerImage.push()
                         echo "push2"
