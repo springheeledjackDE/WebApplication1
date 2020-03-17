@@ -20,15 +20,14 @@ environment {
                 checkout scm
 
                 script {
-                    def customImage = docker.build(registry + ":${env.BUILD_ID}")
-                 
+                    dockerImage = docker.build(registry + ":${env.BUILD_ID}")
                 }
             }
         }
         stage('Deploy Image on Node3') {
             steps{
                 script {
-                        docker.withRegistry( '', dockerHubCredential ) {
+                    docker.withRegistry( '', dockerHubCredential ) {
                         dockerImage.push()
                     }
                 }
