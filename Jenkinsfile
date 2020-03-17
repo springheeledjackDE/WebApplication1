@@ -26,6 +26,7 @@ environment {
                         echo "push1"
                         dockerImage.push()
                         echo "push2"
+                    }
                 }
             }
         }
@@ -33,7 +34,6 @@ environment {
             steps{
                 script {
                     
-                    }
                 }
             }
         }
