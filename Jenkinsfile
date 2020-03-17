@@ -21,16 +21,18 @@ environment {
 
                 script {
                     dockerImage = docker.build(registry + ":${env.BUILD_ID}")
+
+                    docker.withRegistry( '', dockerHubCredential ) {
+                        echo "push1"
+                        dockerImage.push()
+                        echo "push2"
                 }
             }
         }
         stage('Deploy Image on Node3') {
             steps{
                 script {
-                    docker.withRegistry( 'https://hub.docker.com', dockerHubCredential ) {
-                        echo "push1"
-                        dockerImage.push()
-                        echo "push2"
+                    
                     }
                 }
             }
