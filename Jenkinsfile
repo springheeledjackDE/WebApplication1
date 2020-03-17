@@ -1,4 +1,9 @@
 pipeline {
+environment {
+    registry = "springheeledjack/temp"
+    dockerHubCredential = 'dockerHubCredentials'
+    dockerImage = ''
+  }
     agent any
 
     stages {
@@ -9,15 +14,24 @@ pipeline {
                
             }
         }
-        stage('Unstash To Node3 e') {
+        stage('Building image on Node3') {
             agent { node { label 'Node3' } }
             steps {
                 checkout scm
 
                 script {
-                    def customImage = docker.build("myimage:${env.BUILD_ID}")
+                    def customImage = docker.build(registry + ":${env.BUILD_ID}")
                     customImage.push()
                   
+                }
+            }
+        }
+        stage('Deploy Image on Node3') {
+            steps{
+                script {
+                        docker.withRegistry( '', dockerHubCredential ) {
+                        dockerImage.push()
+                    }
                 }
             }
         }
