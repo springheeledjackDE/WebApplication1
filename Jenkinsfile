@@ -9,14 +9,15 @@ pipeline {
                
             }
         }
-        stage('Unstash To Node3 c') {
+        stage('Unstash To Node3 d') {
             agent { node { label 'Node3' } }
             steps {
                 checkout scm
 
                 script {
-                    def customImage = docker.build("my-image:${env.BUILD_ID}")
+                    def customImage = docker.build("myimage:${env.BUILD_ID}")
                     customImage.push()
+                  
                 }
             }
         }
